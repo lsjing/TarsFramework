@@ -13,7 +13,7 @@ case $ARGS in
         cd ..; git submodule update --init --recursive
         ;;
     all)
-	    cd $BASEPATH;  cmake ..;  make
+	    cd $BASEPATH;  cmake ..;  make -j `grep processor /proc/cpuinfo | wc -l`
         ;;
     cleanall)
         cd $BASEPATH; make clean; ls | grep -v build.sh | grep -v README.md | xargs rm -rf
